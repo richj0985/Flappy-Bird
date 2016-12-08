@@ -7,6 +7,7 @@ package com.mrlamont.flappy.states;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Matrix4;
 
 /**
  *
@@ -32,5 +33,20 @@ public abstract class State {
     
     public OrthographicCamera getCamera(){
         return cam;
+    }
+    
+    public void setCameraView(float width, float height){
+        cam.setToOrtho(false, width, height);
+        cam.update();
+    }
+    
+    public void setCameraPosition(float x, float y){
+        cam.position.x = x;
+        cam.position.y = y;
+        cam.update();
+    }
+    
+    public Matrix4 getCombinedCamera(){
+        return cam.combined;
     }
 }

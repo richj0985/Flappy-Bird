@@ -34,7 +34,7 @@ public class FlappyBird extends ApplicationAdapter {
         // handle input
         
         // update the game states
-        
+        stateManager.update(Gdx.graphics.getDeltaTime());
         // draw the screen
         stateManager.render(batch);
     }

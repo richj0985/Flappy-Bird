@@ -8,6 +8,7 @@ package com.mrlamont.flappy.states;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mrlamont.flappy.Bird;
+import com.mrlamont.flappy.FlappyBird;
 
 /**
  *
@@ -20,7 +21,8 @@ public class PlayState extends State{
     
     public PlayState(StateManager sm){
         super(sm);
-        
+        setCameraView(FlappyBird.WIDTH/2, FlappyBird.HEIGHT/2);
+        //setCameraPosition(FlappyBird.WIDTH/2, FlappyBird.HEIGHT/2);
         bird = new Bird(50, 200);
         bg = new Texture("bg.png");
         
@@ -29,6 +31,8 @@ public class PlayState extends State{
     @Override
     public void render(SpriteBatch batch) {
         // draw the screen
+        // link spritebatch to the camera
+        batch.setProjectionMatrix(getCombinedCamera());
         // beginning of stuff to draw
         batch.begin();
         // draw the background
@@ -42,6 +46,7 @@ public class PlayState extends State{
     @Override
     public void update(float deltaTime) {
         // update any game models
+        bird.update(deltaTime);
     }
 
     @Override

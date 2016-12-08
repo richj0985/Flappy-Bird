@@ -31,7 +31,14 @@ public class Bird {
     }
     
     public void update(float deltaTime){
-        
+        // add gravity
+        velocity.y += GRAVITY;
+        // scaling velocity by time
+        velocity.scl(deltaTime);
+        // adding velocity to position
+        position.add(velocity);
+        // unscale velocity
+        velocity.scl(1/deltaTime);
     }
     
     public void render(SpriteBatch batch){

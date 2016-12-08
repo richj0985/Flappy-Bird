@@ -23,6 +23,7 @@ public abstract class State {
     
     public abstract void render(SpriteBatch batch);
     public abstract void update(float deltaTime);
+    public abstract void handleInput();
     public abstract void dispose();
     
     public StateManager getStateManager(){

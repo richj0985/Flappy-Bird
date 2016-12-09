@@ -19,10 +19,11 @@ public class Bird {
     private Texture birdPic;
     
     private final float GRAVITY = -15;
+    private final float MOVEMENT = 100;
     
     public Bird(int x, int y){
         position = new Vector3(x,y,0);
-        velocity = new Vector3(0,0,0);
+        velocity = new Vector3(MOVEMENT,0,0);
         birdPic = new Texture("bird.png");
     }
     
@@ -43,5 +44,9 @@ public class Bird {
     
     public void render(SpriteBatch batch){
         batch.draw(birdPic, position.x, position.y);
+    }
+    
+    public float getX(){
+        return position.x;
     }
 }

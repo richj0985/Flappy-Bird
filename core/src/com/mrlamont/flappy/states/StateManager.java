@@ -40,5 +40,9 @@ public class StateManager {
     public void render(SpriteBatch batch){
         states.peek().render(batch);
     }
+
+    public void handleInput() {
+        states.peek().handleInput();
+    }
     
 }

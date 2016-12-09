@@ -32,7 +32,7 @@ public class FlappyBird extends ApplicationAdapter {
     public void render() {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         // handle input
-        
+        stateManager.handleInput();
         // update the game states
         stateManager.update(Gdx.graphics.getDeltaTime());
         // draw the screen

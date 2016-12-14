@@ -7,6 +7,7 @@ package com.mrlamont.flappy;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 
 /**
@@ -17,7 +18,7 @@ public class Bird {
     private Vector3 position;
     private Vector3 velocity;
     private Texture birdPic;
-    
+    private Rectangle bounds;
     private final float GRAVITY = -15;
     private final float MOVEMENT = 100;
     
@@ -25,6 +26,7 @@ public class Bird {
         position = new Vector3(x,y,0);
         velocity = new Vector3(MOVEMENT,0,0);
         birdPic = new Texture("bird.png");
+        bounds = new Rectangle(position.x,position.y, birdPic.getWidth(), birdPic.getHeight());
     }
     
     public void jump(){
@@ -40,6 +42,8 @@ public class Bird {
         position.add(velocity);
         // unscale velocity
         velocity.scl(1/deltaTime);
+        
+        bounds.setPosition(position.x, position.y);
     }
     
     public void render(SpriteBatch batch){
@@ -48,5 +52,17 @@ public class Bird {
     
     public float getX(){
         return position.x;
+    }
+    
+    public float getY(){
+        return position.y;
+    }
+    
+    public Rectangle getBounds(){
+        return bounds;
+    }
+    
+    public void dispose(){
+        birdPic.dispose();
     }
 }
